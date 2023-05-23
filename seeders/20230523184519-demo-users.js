@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         username: 'Preppy',
-        
+        password:'Gouda',
         firstName: 'Lexi',
         createdAt: new Date(),
         updatedAt: new Date()

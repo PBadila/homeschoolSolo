@@ -4,7 +4,7 @@ const router = express.Router();
 const {Affirmations} = require('../models')
 
 //Create a new affirmation
-router.post('/', async (reg,res) => {
+router.post('/', async (req,res) => {
     const {statement} = req.body 
     try{
         const affirmation = await Affirmations.create({statement})

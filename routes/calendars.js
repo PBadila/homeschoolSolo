@@ -4,7 +4,7 @@ const router = express.Router();
 const {Calendar} = require('../models')
 
 //Create a new calendar event
-router.post('/', async (reg,res) => {
+router.post('/', async (req,res) => {
     const {date,event,time,userID} = req.body 
     try{
         const calendar = await Calendar.create({date,event,time,userID})

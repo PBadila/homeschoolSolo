@@ -4,7 +4,7 @@ const router = express.Router();
 const {Assignment} = require('../models')
 
 //Create a new assignment
-router.post('/', async (reg,res) => {
+router.post('/', async (req,res) => {
     const {title,instructions,link,video,userID,completed} = req.body 
     try{
         const assignment = await Assignment.create({title,instructions,link,video,userID,completed})

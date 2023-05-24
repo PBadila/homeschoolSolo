@@ -4,7 +4,7 @@ const router = express.Router();
 const {Chore} = require('../models')
 
 //Create a new chores
-router.post('/', async (reg,res) => {
+router.post('/', async (req,res) => {
     const {chore,timeOfDay,day,userID} = req.body 
     try{
         const chore = await Chore.create({chore,timeOfDay,day,userID})

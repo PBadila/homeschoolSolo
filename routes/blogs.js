@@ -4,7 +4,7 @@ const router = express.Router();
 const {Blog} = require('../models')
 
 //Create a new blog
-router.post('/', async (reg,res) => {
+router.post('/', async (req,res) => {
     const {date,entry,userID} = req.body 
     try{
         const blog = await Blog.create({date,entry,userID})

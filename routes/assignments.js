@@ -43,6 +43,28 @@ router.delete("/:id", async (req, res) => {
     } catch (error) {
       res.status(500).json({ message: "Error deleting assignment", error });
     }
-  });
+  })
+
+  // Update a basket by ID
+router.put("/:id", async (req, res) => {
+  const { completed } = req.body;
+
+  try {
+    
+    const [updated] = await Assignment.update(completed, {
+      where: { id: req.params.id },
+    });
+
+    if (updated) {
+      const updatedAssignment = await Assignment.findByPk(req.params.id);
+      res.json(updatedAssignment);
+    } else {
+      res.status(404).json({ message: "Assignment not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error updating assignment", error });
+  }
+})
+
 
 module.exports = router;

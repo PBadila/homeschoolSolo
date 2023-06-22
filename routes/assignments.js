@@ -28,4 +28,21 @@ router.get('/user/:userID', async (req,res) => {
     }
 })
 
+// Delete an assignment by ID
+router.delete("/:id", async (req, res) => {
+    try {
+      const deleted = await Assignment.destroy({
+        where: { id: req.params.id },
+      });
+  
+      if (deleted) {
+        res.status(204).json({ message: "Assignment deleted" });
+      } else {
+        res.status(404).json({ message: "Assignment not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting assignment", error });
+    }
+  });
+
 module.exports = router;
